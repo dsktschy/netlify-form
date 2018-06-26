@@ -1,5 +1,6 @@
 <template>
   <form ref="root" @submit.prevent="submit">
+    <input class="honeypot" v-model="honeypot"/>
     <label>Name:<input type="text" v-model="form.name" required/></label>
     <label>Email:<input type="email" v-model="form.email" required/></label>
     <label>Message:<textarea v-model="form.message" required/></label>
@@ -14,6 +15,7 @@ import qs from 'qs'
 export default {
   data () {
     return {
+      honeypot: '',
       form: {
         'form-name': 'contact',
         name: '',
@@ -24,6 +26,7 @@ export default {
   },
   methods: {
     submit () {
+      if (this.honeypot !== '') return
       axios.post(this.$refs.root.action, qs.stringify(this.form))
         .then(() => {
           alert('Thank you!')
@@ -34,6 +37,14 @@ export default {
 </script>
 
 <style>
+.honeypot {
+  border: 0;
+  padding: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  appearance: none;
+}
 label {
   display: block;
 }
