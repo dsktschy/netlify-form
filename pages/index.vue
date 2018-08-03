@@ -1,9 +1,9 @@
 <template>
   <form ref="root" @submit.prevent="submit">
-    <input class="honeypot" v-model="honeypot"/>
-    <label>Name:<input type="text" v-model="form.name" required/></label>
-    <label>Email:<input type="email" v-model="form.email" required/></label>
-    <label>Message:<textarea v-model="form.message" required/></label>
+    <input class="honeypot" name="honeypot"/>
+    <label>Name:<input type="text" name="name" required/></label>
+    <label>Email:<input type="email" name="email" required/></label>
+    <label>Message:<textarea name="message" required/></label>
     <button type="submit">Send</button>
   </form>
 </template>
@@ -13,24 +13,17 @@ import axios from 'axios'
 import qs from 'qs'
 
 export default {
-  data () {
-    return {
-      honeypot: '',
-      form: {
-        'form-name': 'contact',
-        name: '',
-        email: '',
-        message: ''
-      }
-    }
-  },
   methods: {
-    submit () {
-      if (this.honeypot !== '') return
-      axios.post(this.$refs.root.action, qs.stringify(this.form))
-        .then(() => {
-          alert('Thank you!')
-        })
+    submit ({ target }) {
+      if (target.honeypot.value !== '') return
+      axios.post(target.action, qs.stringify({
+        'form-name': 'contact',
+        name: target.name.value,
+        email: target.email.value,
+        message: target.message.vaule
+      }))
+        .then(() => { alert('Thank you!') })
+        .catch((err) => { throw err })
     }
   }
 }
