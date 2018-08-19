@@ -17,7 +17,7 @@ export default {
     submit ({ target }) {
       if (target.honeypot.value !== '') return
       axios.post(target.action, qs.stringify({
-        'form-name': 'contact',
+        'form-name': target.getAttribute('name'),
         name: target.name.value,
         email: target.email.value,
         message: target.message.value
