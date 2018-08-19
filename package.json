@@ -1,7 +1,7 @@
 {
-  "name": "shoheiamimori.com-nuxt",
+  "name": "netlify-form",
   "version": "1.0.0",
-  "description": "The front-end of shoheiamimori.com",
+  "description": "Sample of form on netlify",
   "author": "dsktschy",
   "private": true,
   "scripts": {
