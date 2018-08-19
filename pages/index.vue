@@ -20,7 +20,7 @@ export default {
         'form-name': 'contact',
         name: target.name.value,
         email: target.email.value,
-        message: target.message.vaule
+        message: target.message.value
       }))
         .then(() => { alert('Thank you!') })
         .catch((err) => { throw err })
