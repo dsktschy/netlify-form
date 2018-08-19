@@ -1,5 +1,5 @@
 <template>
-  <form ref="root" @submit.prevent="submit" netlify name="contact">
+  <form ref="root" @submit.prevent="submit" netlify netlify-honeypot="honeypot" name="contact">
     <input class="honeypot" name="honeypot"/>
     <label>Name:<input type="text" name="name" required/></label>
     <label>Email:<input type="email" name="email" required/></label>
