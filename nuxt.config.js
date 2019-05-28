@@ -56,9 +56,9 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    extend(config) {
       // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
+      if (process.server && process.browser) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
